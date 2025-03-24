@@ -6,14 +6,16 @@ interface UserState {
   id: string | null
   name: string | null
   email: string | null
-  isAuthenticated: boolean
+  isAuthenticated: boolean,
+  role: string
 }
 
 const initialState: UserState = {
   id: null,
   name: null,
   email: null,
-  isAuthenticated: false
+  isAuthenticated: false,
+  role: ''
 }
 
 export const userSlice = createSlice({
@@ -25,6 +27,7 @@ export const userSlice = createSlice({
       state.name = action.payload.name
       state.email = action.payload.email
       state.isAuthenticated = true
+      state.role = action.payload.role
     },
     clearUser: (state) => {
       return initialState
